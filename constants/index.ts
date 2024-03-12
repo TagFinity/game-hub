@@ -19,7 +19,7 @@ export const sidebarLinks: SidebarLink[] = [
     },
     {
         imgURL: "/assets/icons/teams.svg",
-        route: "/teams",
+        route: "/community/teams",
         label: "Teams",
     },
     {
@@ -34,7 +34,7 @@ export const sidebarLinks: SidebarLink[] = [
     },
     {
         imgURL: "/assets/icons/faq.svg",
-        route: "/frequenty-asked",
+        route: "/frequently-asked-questions",
         label: "FAQ",
     },
 ];

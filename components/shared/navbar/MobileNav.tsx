@@ -12,10 +12,8 @@ import { SignedOut } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
-// import { useSelector } from "react-redux";
-// import { RootState } from "@/lib/store";
 
-const NavContent = () => {
+export const NavContent = () => {
   const pathname = usePathname();
   return (
     <section className="flex h-full flex-col gap-6 pt-16">
