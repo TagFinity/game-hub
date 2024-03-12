@@ -1,11 +1,5 @@
-import { UserButton } from "@clerk/nextjs";
-
 const HomePage = () => {
-  return (
-    <div className="h-screen">
-      <UserButton />
-    </div>
-  );
+  return <div className="h-screen">Home Screeen </div>;
 };
 
 export default HomePage;
