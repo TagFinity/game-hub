@@ -36,7 +36,7 @@ const LeftSideBar = () => {
                 height={28}
                 className={`${isActive ? "" : "invert-colors"}`}
               />
-              <p className={`${isActive ? "base-bold" : "base-medium"}`}>
+              <p className={`${isActive ? "base-bold" : "base-medium"} `}>
                 {item.label}
               </p>
             </Link>

@@ -69,8 +69,8 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         fontFamily: {
-          inter: ["var(--font-inter)"],
-          spaceGrotesk: ["var(--font-spaceGrotesk)"],
+          // inter: ["var(--font-inter)"],
+          // spaceGrotesk: ["var(--font-spaceGrotesk)"],
         },
         boxShadow: {
           "light-100":
