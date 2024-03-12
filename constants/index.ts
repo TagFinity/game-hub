@@ -19,7 +19,7 @@ export const sidebarLinks: SidebarLink[] = [
     },
     {
         imgURL: "/assets/icons/teams.svg",
-        route: "/community/teams",
+        route: "/teams",
         label: "Teams",
     },
     {

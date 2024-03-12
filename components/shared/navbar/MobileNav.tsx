@@ -1,22 +1,22 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import { SignedOut } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
 import { sidebarLinks } from "@/constants";
+import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const NavContent = () => {
   const pathname = usePathname();
   return (
-    <section className="flex h-full flex-col gap-6 pt-16">
+    <section className="flex flex-col gap-6 pt-16">
       {sidebarLinks.map((item) => {
         const isActive =
           (pathname.includes(item.route) && item.route.length > 1) ||
@@ -50,7 +50,6 @@ export const NavContent = () => {
 };
 
 const MobileNav = () => {
-  //   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -58,7 +57,7 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="background-light900_dark200 border-none"
+        className="background-light900_dark200 border-none overflow-y-auto custom-scrollbar flex flex-1 flex-col justify-between"
       >
         <Link href="/" className="flex items-center gap-1">
           <Image
@@ -67,34 +66,45 @@ const MobileNav = () => {
             width={27}
             height={27}
           />
-          <p className="h2-bold text-dark100_light900 ">
+          <p className="h2-bold text-dark100_light900">
             Tag<span className=" text-purple-500 ">Finity</span>{" "}
           </p>
         </Link>
-        <div>
+
+        <div className="h-auto">
           <SheetClose asChild>
             <NavContent />
           </SheetClose>
+        </div>
 
+        <div className="flex flex-col gap-3">
           <SignedOut>
-            <div className="flex flex-col gap-3">
-              <SheetClose asChild>
-                <Link href="/sign-in">
-                  <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
-                    <span className="primary-text-gradient">Sign In</span>
-                  </Button>
-                </Link>
-              </SheetClose>
+            <SheetClose asChild>
+              <Link href="/sign-in">
+                <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+                  <span className="primary-text-gradient">Sign In</span>
+                </Button>
+              </Link>
+            </SheetClose>
 
-              <SheetClose asChild>
-                <Link href="/sign-up">
-                  <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none text-dark400_light900">
-                    Sign Up
-                  </Button>
-                </Link>
-              </SheetClose>
-            </div>
+            <SheetClose asChild>
+              <Link href="/sign-up">
+                <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none text-dark400_light900">
+                  Sign Up
+                </Button>
+              </Link>
+            </SheetClose>
           </SignedOut>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <SignedIn>
+            <SignOutButton>
+              <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-3xl px-4 py-3 shadow-none ">
+                <span className="primary-text-gradient">Sign Out</span>
+              </Button>
+            </SignOutButton>
+          </SignedIn>
         </div>
       </SheetContent>
     </Sheet>

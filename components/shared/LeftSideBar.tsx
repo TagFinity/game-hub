@@ -4,26 +4,25 @@ import { sidebarLinks } from "@/constants";
 import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
-const LeftNavBar = () => {
-  const router = useRouter();
+const LeftSideBar = () => {
   const pathname = usePathname();
 
-  // const signout = () => {
-  //   localStorage.removeItem("clerk-db-jwt");
-  // };
-
   return (
-    <section className="hidden h-full min-w-[15%] flex-col gap-6 pt-24 sm:flex ">
-      {sidebarLinks.map((item) => {
-        const isActive =
-          (pathname.includes(item.route) && item.route.length > 1) ||
-          pathname === item.route;
-        return (
-          <div key={item.route}>
+    <section
+      className="background-light900_dark200 light-border stickey left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 shadow-light-300 
+    dark:shadow-none max-sm:hidden lg:w-[266px] custom-scrollbar"
+    >
+      <div className="flex flex-1 flex-col gap-10">
+        {sidebarLinks.map((item) => {
+          const isActive =
+            (pathname.includes(item.route) && item.route.length > 1) ||
+            pathname === item.route;
+          return (
             <Link
               href={item.route}
+              key={item.route}
               className={`${
                 isActive
                   ? "primary-gradient rounded-lg text-light-900"
@@ -41,20 +40,20 @@ const LeftNavBar = () => {
                 {item.label}
               </p>
             </Link>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
 
       <div className="flex flex-col gap-5">
         <SignedOut>
           <Link href="/sign-in">
-            <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-3xl px-4 py-3 shadow-none mx-5">
+            <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-3xl px-4 py-3 shadow-none ">
               <span className="primary-text-gradient">Sign In</span>
             </Button>
           </Link>
 
           <Link href="/sign-up">
-            <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-3xl px-4 py-3 shadow-none mx-5 text-dark400_light900">
+            <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-3xl px-4 py-3 shadow-none text-dark400_light900">
               Sign Up
             </Button>
           </Link>
@@ -63,7 +62,7 @@ const LeftNavBar = () => {
       <div>
         <SignedIn>
           <SignOutButton>
-            <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-3xl px-4 py-3 shadow-none mx-5">
+            <Button className="small-medium light-border-2 btn-tertiary min-h-[41px] w-full rounded-3xl px-4 py-3 shadow-none">
               <span className="primary-text-gradient">Sign Out</span>
             </Button>
           </SignOutButton>
@@ -73,4 +72,4 @@ const LeftNavBar = () => {
   );
 };
 
-export default LeftNavBar;
+export default LeftSideBar;
