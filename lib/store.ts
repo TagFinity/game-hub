@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer from './features/themes/themeSlice';
+import createPostReducer from './features/ui/createPostSlice';
 
 const makeStore = () =>
     configureStore({
         reducer: {
             theme: themeReducer,
+            createPost: createPostReducer,
         },
     });
 
